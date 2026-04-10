@@ -1,0 +1,44 @@
+[
+  {
+    "id": "placa-eps-t1",
+    "nome": "Placa de EPS T1 (Isopor)",
+    "categoria": "Placas EPS",
+    "descricao_curta": "Placas de poliestireno expandido de alta densidade para isolamento térmico e acústico. Perfeitas para construção civil e projetos industriais.",
+    "imagem_url": "images/placa-eps.jpg",
+    "especificacoes": [
+      { "titulo": "Densidade", "valor": "Tipo 1 (T1)" },
+      { "titulo": "Espessura", "valor": "50mm (Padrão)" },
+      { "titulo": "Dimensões", "valor": "1000mm x 500mm" },
+      { "titulo": "Uso", "valor": "Contrapisos, Paredes e Forros" }
+    ],
+    "acao": "solicitar_orcamento"
+  },
+  {
+    "id": "cola-fixa-tudo-unipega",
+    "nome": "Cola Fixa Tudo (Unipega)",
+    "categoria": "Insumos para Instalação",
+    "descricao_curta": "Adesivo híbrido de alta performance que garante a colagem de placas de EPS em qualquer superfície, interna ou externa.",
+    "imagem_url": "images/cola-unipega.jpg",
+    "especificacoes": [
+      { "titulo": "Parceiro", "valor": "Unipega" },
+      { "titulo": "Rendimento", "valor": "Até 10m² por cartucho" },
+      { "titulo": "Embalagem", "valor": "Cartucho de 400g" },
+      { "titulo": "Cura Total", "valor": "24 horas" }
+    ],
+    "acao": "solicitar_orcamento"
+  },
+  {
+    "id": "fita-telada-walsywa",
+    "nome": "Fita Telada (Walsywa)",
+    "categoria": "Insumos para Instalação",
+    "descricao_curta": "Fita telada de fibra de vidro para tratamento de juntas e reforço de cantos em sistemas com placas cimentícias e EPS.",
+    "imagem_url": "images/fita-walsywa.jpg",
+    "especificacoes": [
+      { "titulo": "Parceiro", "valor": "Walsywa" },
+      { "titulo": "Largura", "valor": "100mm" },
+      { "titulo": "Comprimento", "valor": "Rolo de 50m" },
+      { "titulo": "Aplicação", "valor": "Tratamento de juntas" }
+    ],
+    "acao": "solicitar_orcamento"
+  }
+]
