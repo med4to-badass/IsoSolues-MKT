@@ -3,42 +3,72 @@
     "id": "placa-eps-t1",
     "nome": "Placa de EPS T1 (Isopor)",
     "categoria": "Placas EPS",
-    "descricao_curta": "Placas de poliestireno expandido de alta densidade para isolamento térmico e acústico. Perfeitas para construção civil e projetos industriais.",
-    "imagem_url": "images/placa-eps.jpg",
+    "descricao_curta": "Placas de poliestireno expandido para isolamento térmico e acústico, ideais para construção civil e projetos industriais.",
+    "imagem_url": "images/Styrofoam. Sheets of Factory manufacturing..png",
     "especificacoes": [
       { "titulo": "Densidade", "valor": "Tipo 1 (T1)" },
       { "titulo": "Espessura", "valor": "50mm (Padrão)" },
-      { "titulo": "Dimensões", "valor": "1000mm x 500mm" },
-      { "titulo": "Uso", "valor": "Contrapisos, Paredes e Forros" }
-    ],
-    "acao": "solicitar_orcamento"
+      { "titulo": "Dimensões", "valor": "1000mm x 500mm" }
+    ]
   },
   {
     "id": "cola-fixa-tudo-unipega",
-    "nome": "Cola Fixa Tudo (Unipega)",
+    "nome": "Cola Fixa Tudo",
     "categoria": "Insumos para Instalação",
     "descricao_curta": "Adesivo híbrido de alta performance que garante a colagem de placas de EPS em qualquer superfície, interna ou externa.",
-    "imagem_url": "images/cola-unipega.jpg",
+    "imagem_url": "images/FIXA TUDO V2.jpg",
     "especificacoes": [
       { "titulo": "Parceiro", "valor": "Unipega" },
       { "titulo": "Rendimento", "valor": "Até 10m² por cartucho" },
-      { "titulo": "Embalagem", "valor": "Cartucho de 400g" },
-      { "titulo": "Cura Total", "valor": "24 horas" }
-    ],
-    "acao": "solicitar_orcamento"
+      { "titulo": "Embalagem", "valor": "Cartucho de 400g" }
+    ]
   },
   {
-    "id": "fita-telada-walsywa",
-    "nome": "Fita Telada (Walsywa)",
+    "id": "unipega-bond",
+    "nome": "Unipega Bond",
     "categoria": "Insumos para Instalação",
-    "descricao_curta": "Fita telada de fibra de vidro para tratamento de juntas e reforço de cantos em sistemas com placas cimentícias e EPS.",
-    "imagem_url": "images/fita-walsywa.jpg",
+    "descricao_curta": "Adesivo epóxi de alta resistência para ancoragens e colagens estruturais em concreto, aço e outros substratos.",
+    "imagem_url": "images/UNIPEGA BOND.jpg",
+    "especificacoes": [
+      { "titulo": "Parceiro", "valor": "Unipega" },
+      { "titulo": "Tipo", "valor": "Adesivo Epóxi Estrutural" },
+      { "titulo": "Embalagem", "valor": "Bisnaga 1kg (A+B)" }
+    ]
+  },
+  {
+    "id": "fita-telada-45mm",
+    "nome": "Fita Telada 45mm",
+    "categoria": "Insumos para Instalação",
+    "descricao_curta": "Fita telada de fibra de vidro para tratamento de juntas em drywall e reforço em sistemas de construção a seco.",
+    "imagem_url": "images/Fita 48m x 45mm.png",
     "especificacoes": [
       { "titulo": "Parceiro", "valor": "Walsywa" },
-      { "titulo": "Largura", "valor": "100mm" },
-      { "titulo": "Comprimento", "valor": "Rolo de 50m" },
-      { "titulo": "Aplicação", "valor": "Tratamento de juntas" }
-    ],
-    "acao": "solicitar_orcamento"
+      { "titulo": "Largura", "valor": "45mm" },
+      { "titulo": "Comprimento", "valor": "Rolo de 48m" }
+    ]
+  },
+  {
+    "id": "fita-telada-90mm",
+    "nome": "Fita Telada 90mm",
+    "categoria": "Insumos para Instalação",
+    "descricao_curta": "Fita telada de fibra de vidro para tratamento de juntas e reforço de cantos em sistemas com placas cimentícias e EPS.",
+    "imagem_url": "images/Fita 48m x 90mm.png",
+    "especificacoes": [
+      { "titulo": "Parceiro", "valor": "Walsywa" },
+      { "titulo": "Largura", "valor": "90mm" },
+      { "titulo": "Comprimento", "valor": "Rolo de 48m" }
+    ]
+  },
+  {
+    "id": "pistola-aplicadora",
+    "nome": "Pistola Aplicadora",
+    "categoria": "Insumos para Instalação",
+    "descricao_curta": "Pistola aplicadora profissional para cartuchos de silicone e adesivos de 300ml a 400g. Essencial para a aplicação do Fixa Tudo.",
+    "imagem_url": "images/PISTOLA APLICADORA.jpg",
+    "especificacoes": [
+      { "titulo": "Tipo", "valor": "Profissional" },
+      { "titulo": "Compatibilidade", "valor": "Cartuchos até 400g" },
+      { "titulo": "Material", "valor": "Aço Reforçado" }
+    ]
   }
 ]
