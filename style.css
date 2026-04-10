@@ -2,18 +2,14 @@
 :root {
     --azul-primario: #0066CC;
     --azul-secundario: #004C99;
-    --cinza-escuro: #222; /* Ajustado para um dark mode mais profundo */
-    --cinza-medio: #333333;
+    --cinza-escuro: #1A1A1A;
+    --cinza-card: rgba(40, 40, 40, 0.6);
     --cinza-claro: #F5F5F5;
     --branco: #FFFFFF;
     --font-principal: 'Inter', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-principal);
@@ -22,106 +18,112 @@ body {
     line-height: 1.6;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* Cabeçalho e Logo */
+/* Header Aprimorado */
 .header {
-    background-color: var(--cinza-medio);
+    background-color: #222;
     padding: 20px 0;
     border-bottom: 2px solid var(--azul-primario);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { height: 50px; width: auto; }
+.search-bar { display: flex; }
+.search-bar input {
+    padding: 10px 15px;
+    border: 1px solid #444;
+    border-radius: 5px 0 0 5px;
+    background: #333;
+    color: var(--branco);
+    font-size: 1rem;
+}
+.search-bar button {
+    padding: 10px 15px;
+    border: none;
+    background: var(--azul-primario);
+    color: var(--branco);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 
-.logo {
-    height: 50px;
-    width: auto;
+/* Controles e Título */
+.controls-container { text-align: center; margin: 40px 0; }
+.main-title { font-size: 2.5rem; color: var(--branco); margin-bottom: 20px; }
+.filter-container button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: 2px solid var(--azul-primario);
+    background: transparent;
+    color: var(--azul-primario);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
-
-/* Conteúdo Principal */
-.main-title {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 2.5rem;
+.filter-container button:hover, .filter-container button.active {
+    background: var(--azul-primario);
     color: var(--branco);
 }
 
-/* Grid de Produtos */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding-bottom: 40px;
-}
-
+/* Grid e Cards "Glassmorphism" */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding-bottom: 40px; }
 .product-card {
-    background-color: var(--cinza-medio);
-    border-radius: 8px;
+    background: var(--cinza-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+    position: relative; /* Para o efeito de brilho */
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background-color: #444; /* Cor de fundo enquanto a imagem não carrega */
-}
+.product-card:hover { transform: translateY(-10px); }
+.product-image { width: 100%; height: 200px; object-fit: cover; }
+.product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.product-info h3 { font-size: 1.5rem; color: var(--branco); margin-bottom: 10px; }
+.product-info p { font-size: 1rem; color: var(--cinza-claro); flex-grow: 1; margin-bottom: 20px; }
 
-.product-info {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+.btn-details {
+    display: block; width: 100%; padding: 15px;
+    background-color: transparent; color: var(--azul-primario);
+    text-align: center; text-decoration: none; font-size: 1rem; font-weight: 600;
+    border: 2px solid var(--azul-primario); border-radius: 5px; cursor: pointer; transition: all 0.2s ease;
 }
+.btn-details:hover { background-color: var(--azul-primario); color: var(--branco); }
 
-.product-info h3 {
-    font-size: 1.5rem;
-    color: var(--branco);
-    margin-bottom: 10px;
+/* Modal */
+.modal-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000;
 }
-
-.product-info p {
-    font-size: 1rem;
-    color: var(--cinza-claro);
-    flex-grow: 1;
-    margin-bottom: 20px;
+.modal-container.show { opacity: 1; visibility: visible; }
+.modal-content {
+    background: #222; padding: 40px; border-radius: 10px;
+    width: 90%; max-width: 600px; position: relative;
+    transform: scale(0.9); transition: transform 0.3s ease;
 }
-
-.btn-orcamento {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: var(--azul-primario);
-    color: var(--branco);
-    text-align: center;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+.modal-container.show .modal-content { transform: scale(1); }
+.modal-close-btn {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; color: white;
+    font-size: 2rem; cursor: pointer;
 }
-
-.btn-orcamento:hover {
-    background-color: var(--azul-secundario);
-}
+#modal-body h2 { color: var(--azul-primario); margin-bottom: 20px; }
+#modal-body img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; margin-bottom: 20px; }
+#modal-body p { margin-bottom: 20px; }
+#modal-body ul { list-style: none; margin-bottom: 30px; }
+#modal-body li { padding: 10px; border-bottom: 1px solid #444; }
+#modal-body li strong { color: var(--azul-primario); }
 
 /* Rodapé */
-.footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: var(--cinza-medio);
-    border-top: 1px solid #444;
-    font-size: 0.9rem;
-}
+.footer { text-align: center; padding: 20px 0; background: #222; border-top: 1px solid #444; font-size: 0.9rem; }
