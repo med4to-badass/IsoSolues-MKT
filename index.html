@@ -12,21 +12,40 @@
 <body>
 
     <header class="header">
-        <div class="container">
+        <div class="container header-container">
             <img src="Logo.png" alt="Logo IsoSoluções" class="logo">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar produtos...">
+                <button>&#x1F50D;</button> <!-- Ícone de Lupa -->
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <h1 class="main-title">Nossos Produtos</h1>
+        <div class="controls-container">
+            <h1 class="main-title">Nossos Produtos</h1>
+            <div id="filter-container" class="filter-container">
+                <!-- Botões de filtro serão inseridos aqui -->
+            </div>
+        </div>
         <div id="product-grid" class="product-grid">
-            <!-- Os produtos do products.json serão inseridos aqui pelo app.js -->
+            <!-- Os produtos serão inseridos aqui pelo app.js -->
         </div>
     </main>
 
     <footer class="footer">
         <p>&copy; 2026 IsoSoluções. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Modal Structure -->
+    <div id="modal-container" class="modal-container">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div id="modal-body">
+                <!-- Conteúdo do produto será inserido aqui -->
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
