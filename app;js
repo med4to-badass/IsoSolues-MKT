@@ -1,0 +1,42 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const productGrid = document.getElementById('product-grid');
+
+    // Função para buscar os produtos do JSON
+    const fetchProducts = async () => {
+        try {
+            const response = await fetch('products.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const products = await response.json();
+            displayProducts(products);
+        } catch (error) {
+            console.error("Erro ao buscar os produtos:", error);
+            productGrid.innerHTML = '<p>Não foi possível carregar os produtos. Tente novamente mais tarde.</p>';
+        }
+    };
+
+    // Função para exibir os produtos na tela
+    const displayProducts = (products) => {
+        if (products.length === 0) {
+            productGrid.innerHTML = '<p>Nenhum produto encontrado.</p>';
+            return;
+        }
+
+        productGrid.innerHTML = products.map(product => `
+            <div class="product-card">
+                <img src="${product.imagem_url}" alt="${product.nome}" class="product-image">
+                <div class="product-info">
+                    <h3>${product.nome}</h3>
+                    <p>${product.descricao_curta}</p>
+                    <a href="#" class="btn-orcamento" data-id="${product.id}">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+            </div>
+        `).join('');
+    };
+
+    // Inicia a aplicação
+    fetchProducts();
+});
