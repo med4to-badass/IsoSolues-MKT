@@ -1,0 +1,127 @@
+/* Definição das variáveis de cor e reset básico */
+:root {
+    --azul-primario: #0066CC;
+    --azul-secundario: #004C99;
+    --cinza-escuro: #222; /* Ajustado para um dark mode mais profundo */
+    --cinza-medio: #333333;
+    --cinza-claro: #F5F5F5;
+    --branco: #FFFFFF;
+    --font-principal: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--cinza-escuro);
+    color: var(--cinza-claro);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho e Logo */
+.header {
+    background-color: var(--cinza-medio);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--azul-primario);
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Conteúdo Principal */
+.main-title {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 2.5rem;
+    color: var(--branco);
+}
+
+/* Grid de Produtos */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.product-card {
+    background-color: var(--cinza-medio);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #444; /* Cor de fundo enquanto a imagem não carrega */
+}
+
+.product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h3 {
+    font-size: 1.5rem;
+    color: var(--branco);
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 1rem;
+    color: var(--cinza-claro);
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.btn-orcamento {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--azul-primario);
+    color: var(--branco);
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-orcamento:hover {
+    background-color: var(--azul-secundario);
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: var(--cinza-medio);
+    border-top: 1px solid #444;
+    font-size: 0.9rem;
+}
