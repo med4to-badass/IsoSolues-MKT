@@ -42,77 +42,79 @@ function buildFilterButtons(categories) {
         .join('');
 }
 
-// ─── Browser entrypoint ───────────────────────────────────────────────────────
+// ─── Browser entrypoint (skipped in Node/Jest environments) ────────────────────
 
-document.addEventListener('DOMContentLoaded', () => {
-    const productGrid = document.getElementById('product-grid');
-    const filterContainer = document.getElementById('filter-container');
-    const modalContainer = document.getElementById('modal-container');
-    const modalBody = document.getElementById('modal-body');
-    const closeModalBtn = document.querySelector('.modal-close-btn');
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        const productGrid = document.getElementById('product-grid');
+        const filterContainer = document.getElementById('filter-container');
+        const modalContainer = document.getElementById('modal-container');
+        const modalBody = document.getElementById('modal-body');
+        const closeModalBtn = document.querySelector('.modal-close-btn');
 
-    let allProducts = [];
+        let allProducts = [];
 
-    const displayProducts = (products) => {
-        productGrid.innerHTML = products.map(buildProductCard).join('');
-    };
+        const displayProducts = (products) => {
+            productGrid.innerHTML = products.map(buildProductCard).join('');
+        };
 
-    const setupFilters = () => {
-        filterContainer.innerHTML = buildFilterButtons(getCategories(allProducts));
-    };
+        const setupFilters = () => {
+            filterContainer.innerHTML = buildFilterButtons(getCategories(allProducts));
+        };
 
-    const filterProducts = (category) => {
-        document.querySelector('.filter-btn.active').classList.remove('active');
-        document.querySelector(`.filter-btn[data-category="${category}"]`).classList.add('active');
+        const filterProducts = (category) => {
+            document.querySelector('.filter-btn.active').classList.remove('active');
+            document.querySelector(`.filter-btn[data-category="${category}"]`).classList.add('active');
 
-        const filtered = filterByCategory(allProducts, category);
-        productGrid.innerHTML = '';
-        setTimeout(() => displayProducts(filtered), 50);
-    };
+            const filtered = filterByCategory(allProducts, category);
+            productGrid.innerHTML = '';
+            setTimeout(() => displayProducts(filtered), 50);
+        };
 
-    const openModal = (productId) => {
-        const product = allProducts.find(p => p.id === productId);
-        if (!product) return;
-        modalBody.innerHTML = buildModalContent(product);
-        modalContainer.classList.add('show');
-    };
+        const openModal = (productId) => {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            modalBody.innerHTML = buildModalContent(product);
+            modalContainer.classList.add('show');
+        };
 
-    const closeModal = () => {
-        modalContainer.classList.remove('show');
-    };
+        const closeModal = () => {
+            modalContainer.classList.remove('show');
+        };
 
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch('products.json');
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            allProducts = await response.json();
-            setupFilters();
-            displayProducts(allProducts);
-        } catch (error) {
-            console.error('Erro ao buscar os produtos:', error);
-            productGrid.innerHTML = '<p>Não foi possível carregar os produtos.</p>';
-        }
-    };
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('products.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                allProducts = await response.json();
+                setupFilters();
+                displayProducts(allProducts);
+            } catch (error) {
+                console.error('Erro ao buscar os produtos:', error);
+                productGrid.innerHTML = '<p>Não foi possível carregar os produtos.</p>';
+            }
+        };
 
-    filterContainer.addEventListener('click', e => {
-        if (e.target.classList.contains('filter-btn')) {
-            filterProducts(e.target.dataset.category);
-        }
+        filterContainer.addEventListener('click', e => {
+            if (e.target.classList.contains('filter-btn')) {
+                filterProducts(e.target.dataset.category);
+            }
+        });
+
+        productGrid.addEventListener('click', e => {
+            if (e.target.classList.contains('btn-details')) {
+                openModal(e.target.dataset.id);
+            }
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalContainer.addEventListener('click', e => {
+            if (e.target === modalContainer) closeModal();
+        });
+
+        fetchProducts();
     });
-
-    productGrid.addEventListener('click', e => {
-        if (e.target.classList.contains('btn-details')) {
-            openModal(e.target.dataset.id);
-        }
-    });
-
-    closeModalBtn.addEventListener('click', closeModal);
-    modalContainer.addEventListener('click', e => {
-        if (e.target === modalContainer) closeModal();
-    });
-
-    fetchProducts();
-});
+}
 
 // ─── Test exports ─────────────────────────────────────────────────────────────
 
